@@ -1,0 +1,31 @@
+[ERR!] cwd  : f:\Projetos\GitHub\GERSOS - Gerenciador De Cursos\server
+[ERR!] os   : Windows_NT 10.0.10586
+[ERR!] argv : "F:\\Program Files\\nodejs\\node.exe" "C:\\Users\\isaac\\AppData\\Roaming\\npm\\node_modules\\tsd\\build\\cli.js" "query" "jsonwebtoken" "--action" "install" "--save"
+[ERR!] node : v4.4.4
+[ERR!] tsd  : 0.6.5
+[ERR!] Error: Unexpected end of input
+[ERR!] CODE : undefined
+[ERR!] Unexpected end of input
+[ERR!] If you need help, you may report this error at:
+    https://github.com/DefinitelyTyped/tsd/issues
+
+[ERR!] 
+SyntaxError: Unexpected end of input
+    at Object.parse (native)
+    at JSONStabilizer.parseString (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\build\xm\lib\JSONStabilizer.js:30:27)
+    at Config.parseJSONString (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\build\tsd\context\Config.js:125:37)
+    at C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\build\tsd\logic\ConfigIO.js:44:43
+    at tryCatch1 (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\node_modules\bluebird\js\main\util.js:63:19)
+    at Promise$_callHandler [as _callHandler] (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\node_modules\bluebird\js\main\promise.js:695:13)
+    at Promise$_settlePromiseFromHandler [as _settlePromiseFromHandler] (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\node_modules\bluebird\js\main\promise.js:711:18)
+    at Promise$_settlePromiseAt [as _settlePromiseAt] (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\node_modules\bluebird\js\main\promise.js:868:14)
+    at Promise$_settlePromises [as _settlePromises] (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\node_modules\bluebird\js\main\promise.js:1006:14)
+    at Async$_consumeFunctionBuffer [as _consumeFunctionBuffer] (C:\Users\isaac\AppData\Roaming\npm\node_modules\tsd\node_modules\bluebird\js\main\async.js:74:12)
+
+[ERR!] tsd.json could not be retrieved
+
+[ERR!] .tsdrc could not be retrieved
+
+[ERR!] Please include the following file with any support request:
+    f:\Projetos\GitHub\GERSOS - Gerenciador De Cursos\server\tsd-debug.log
+

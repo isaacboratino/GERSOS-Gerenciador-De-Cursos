@@ -1,0 +1,19 @@
+{
+   "version": "0.1.0",
+   //alteramos o comando para gulp (aquele mesmo comando)
+   //executado em terminal
+   "command": "gulp",
+   // The command is a shell script
+   "isShellCommand": true,
+ 
+   //adicionamos o array de tarefas a serem executadas
+   //após o comando ser executado
+ 
+   "tasks": [{
+       "taskName": "default",
+       "args": [],
+       "isBuildCommand": true,
+       "showOutput": "silent",
+       "problemMatcher": ["$tsc"]
+   }]
+}
