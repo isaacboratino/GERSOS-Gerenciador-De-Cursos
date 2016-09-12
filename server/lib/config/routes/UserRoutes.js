@@ -1,6 +1,6 @@
 var express = require('express');
 var UserController = require('./../../controllers/UserController');
-var ValidationToken = require('./../middlewares/ValidationToken');
+var TokenUtilities = require('./../middlewares/TokenUtilities');
 
 var router = express.Router();
 var UserRoutes = (function () {
@@ -10,10 +10,8 @@ var UserRoutes = (function () {
     Object.defineProperty(UserRoutes.prototype, "routes", {
         get: function () {
             var controller = this._controller;
-
-            //router.use(ValidationToken.validate);
             router.post('/users', controller.create);
-            router.get('/users', ValidationToken.validate, controller.retrieve);
+            router.get('/users', TokenUtilities.validateToken, controller.retrieve);
             router.get('/users/:orderby', controller.retrieve);
             router.get('/users/:limit/:skip', controller.retrieve);
             router.get('/users/:orderby/:limit/:skip', controller.retrieve);

@@ -1,29 +1,33 @@
 import express = require('express');
 
 import Constants = require('./../../config/constants/Constants');
+import IUserModel = require('./../../app/model/interfaces/IUserModel');
 
 var jwt = require('jsonwebtoken');
 
-class ValidationToken {
+class TokenUtilities {
 
-    static validate(req, res, next) {
+    static generateToken(user: IUserModel, res) {        
+        if (!user) {
+            res.status(500).send('Falha ao autenticar');
+        } else if (user) {
+            var token = jwt.sign(user, Constants.TOKEN_SECRET_STRING, {expiresIn: '1h'});
+            res.status(200).send(token);
+        }       
+    }
 
-        console.log('rfrf tg');
+    static validateToken(req, res, next) {
 
         // check header or url parameters or post parameters for token
         var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-        console.log('token  '+token);
-
         // decode token
         if (token) {
-
-            console.log('token  1'+token);
 
             // verifies secret and checks exp
             jwt.verify(token, Constants.TOKEN_SECRET_STRING, function(err, decoded) {      
                 if (err) {
-                    return res.json({ success: false, message: 'Failed to authenticate token.' });    
+                    return res.json({ success: false, message: 'Falha ao autenticar token.' });    
                 } else {
                     // if everything is good, save to request for use in other routes
                     req.decoded = decoded;    
@@ -32,8 +36,6 @@ class ValidationToken {
             });
 
         } else {
-
-            console.log('token  2'+token);
 
             // if there is no token
             // return an error
@@ -46,5 +48,5 @@ class ValidationToken {
     }
 }
 
-Object.seal(ValidationToken);
-export = ValidationToken;
+Object.seal(TokenUtilities);
+export = TokenUtilities;

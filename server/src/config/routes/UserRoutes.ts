@@ -1,6 +1,6 @@
 import express = require('express');
 import UserController = require('./../../controllers/UserController');
-import ValidationToken = require('./../middlewares/ValidationToken');
+import TokenUtilities = require('./../middlewares/TokenUtilities');
 
 var router = express.Router();
 class UserRoutes {
@@ -13,9 +13,8 @@ class UserRoutes {
 
     get routes(): express.Router {
         var controller = this._controller;
-        //router.use(ValidationToken.validate);
         router.post('/users', controller.create);
-        router.get('/users', ValidationToken.validate, controller.retrieve);
+        router.get('/users', TokenUtilities.validateToken, controller.retrieve);
         router.get('/users/:orderby',controller.retrieve);
         router.get('/users/:limit/:skip',controller.retrieve);
         router.get('/users/:orderby/:limit/:skip',controller.retrieve);

@@ -1,11 +1,10 @@
 import express = require('express');
 
-import Constants = require('./../config/constants/Constants');
 import IControllerBase = require('./interfaces/base/IControllerBase');
 import AuthenticationBusiness = require('./../app/business/AuthenticationBusiness');
 import IUserModel = require('./../app/model/interfaces/IUserModel');
 
-var jwt = require('jsonwebtoken');
+import TokenUtilities = require('./../config/middlewares/TokenUtilities');
 
 class AuthenticationController implements IControllerBase<AuthenticationBusiness> {
 
@@ -18,17 +17,7 @@ class AuthenticationController implements IControllerBase<AuthenticationBusiness
                 if (error) 
                     res.status(500).send({'error':error});
                 else {
-                    console.log(result[0]);
-                    var user: IUseModel = result[0];
-                    
-                    if (!user) {
-                        res.status(500).send('Falha ao autenticar');
-                    } else if (user) {
-                        var token = jwt.sign(user, Constants.TOKEN_SECRET_STRING, {
-                            expiresIn: '1h'
-                        });
-                        res.status(200).send(token);
-                    }                    
+                    TokenUtilities.generateToken(result[0], res);    
                 }
                     
             });    
